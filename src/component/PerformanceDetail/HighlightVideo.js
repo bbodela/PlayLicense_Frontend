@@ -6,7 +6,15 @@ const HighlightVideo = ({ item }) => {
 
   useEffect(() => {
     const { performanceVideo } = item;
-    setUrl(performanceVideo.substring(performanceVideo.lastIndexOf("/") + 1));
+    const pcs = performanceVideo.substring(
+      performanceVideo.lastIndexOf("/") + 1
+    );
+
+    if (pcs.includes("watch?v=")) {
+      setUrl(pcs.substring(8));
+    } else {
+      setUrl(pcs);
+    }
   }, []);
   return (
     <Container>
