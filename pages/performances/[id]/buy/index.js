@@ -271,8 +271,9 @@ const ItemImg = styled.div`
   margin-right: 33px;
 
   & > img {
-    min-width: 276px;
-    width: 100%;
+    border-radius: 8px;
+    max-width: 100%;
+    max-height: 386px;
     height: auto;
   }
 `;
