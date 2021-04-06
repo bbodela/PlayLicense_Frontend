@@ -37,7 +37,7 @@ const Complete = ({ image }) => {
       </Divider>
       <Section>
         <ItemImg>
-          <img src={image.poster} alt={image.title} />
+          <img src={image.posterURL.url} alt={image.title} />
         </ItemImg>
       </Section>
       <BtnSection>
