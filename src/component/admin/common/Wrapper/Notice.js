@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 const titleArr = ["순서조정", "제목", "등록일", "자세히보기", "노출", "삭제"];
 
 const Notice = ({ pageType, btnBodyColor, mainColor }) => {
+  const [drag, setDrag] = useState(false);
   const { openModal, closeModal, ModalPortal } = useModal();
   const [noticeID, setNoticeID] = useState(null);
   const [modal, setModal] = useState("");
@@ -53,6 +54,10 @@ const Notice = ({ pageType, btnBodyColor, mainColor }) => {
       file: { url: "", filename: "" },
     },
   ]);
+
+  useEffect(() => {
+    setDrag(true);
+  }, []);
 
   const indexOfLast = currentPage * postsPerPage;
   const indexOfFirst = indexOfLast - postsPerPage; // 0
@@ -123,103 +128,111 @@ const Notice = ({ pageType, btnBodyColor, mainColor }) => {
         pageType={pageType}
         btnBodyColor={btnBodyColor}
       />
-      <DragDropContext onDragEnd={onDragEnd}>
-        <TableWrapper>
-          <Table>
-            <Table_Title>
-              {titleArr.map((title, i) => (
-                <TitleText key={i}>{title}</TitleText>
-              ))}
-            </Table_Title>
-            {list.length === 0 && (
-              <EmptyList>
-                <span>공지사항이 없습니다</span>
-              </EmptyList>
-            )}
-            <Droppable droppableId={"droppable-notice"}>
-              {(provided, snapshot) => {
-                return (
-                  <NoticeList
-                    ref={provided.innerRef}
-                    {...provided.droppableProps}
-                  >
-                    {list.length > 0 &&
-                      showCurrentPosts(list).map((item, idx) => {
-                        return (
-                          <Draggable
-                            key={idx}
-                            draggableId={String(item.id)}
-                            index={idx}
-                          >
-                            {(provided, snapshot) => (
-                              <List
-                                {...provided.draggableProps}
-                                ref={provided.innerRef}
-                              >
-                                <Text>
-                                  <MoveIcon {...provided.dragHandleProps}>
-                                    <IoMenuOutline
-                                      size={24}
-                                      color={color.black3}
+      {drag && (
+        <DragDropContext onDragEnd={onDragEnd}>
+          <TableWrapper>
+            <Table>
+              <Table_Title>
+                {titleArr.map((title, i) => (
+                  <TitleText key={i}>{title}</TitleText>
+                ))}
+              </Table_Title>
+              {list.length === 0 && (
+                <EmptyList>
+                  <span>공지사항이 없습니다</span>
+                </EmptyList>
+              )}
+              <Droppable droppableId={"droppable-notice"}>
+                {(provided, snapshot) => {
+                  return (
+                    <NoticeList
+                      ref={provided.innerRef}
+                      {...provided.droppableProps}
+                    >
+                      {list.length > 0 &&
+                        showCurrentPosts(list).map((item, idx) => {
+                          return (
+                            <Draggable
+                              key={idx}
+                              draggableId={String(item.id)}
+                              index={idx}
+                            >
+                              {(provided, snapshot) => (
+                                <List
+                                  {...provided.draggableProps}
+                                  ref={provided.innerRef}
+                                  style={{
+                                    ...provided.draggableProps.style,
+                                    boxShadow: snapshot.isDragging
+                                      ? "0 0 .4rem #666"
+                                      : "none",
+                                  }}
+                                >
+                                  <Text>
+                                    <MoveIcon {...provided.dragHandleProps}>
+                                      <IoMenuOutline
+                                        size={24}
+                                        color={color.black3}
+                                      />
+                                    </MoveIcon>
+                                  </Text>
+
+                                  <Text>{item.title}</Text>
+
+                                  <Text>{item.createdAt}</Text>
+
+                                  <DetailText>
+                                    <span
+                                      onClick={() => {
+                                        setNoticeID(item.id);
+                                        setModal("detail");
+                                        openModal();
+                                      }}
+                                    >
+                                      자세히보기
+                                    </span>
+                                  </DetailText>
+
+                                  <Text>
+                                    <ToggleSwitchBtn
+                                      on={item.expose}
+                                      switchBtnHandler={() =>
+                                        switchBtnHandler(idx)
+                                      }
+                                      color={mainColor}
                                     />
-                                  </MoveIcon>
-                                </Text>
+                                  </Text>
 
-                                <Text>{item.title}</Text>
-
-                                <Text>{item.createdAt}</Text>
-
-                                <DetailText>
-                                  <span
-                                    onClick={() => {
-                                      setNoticeID(item.id);
-                                      setModal("detail");
-                                      openModal();
-                                    }}
-                                  >
-                                    자세히보기
-                                  </span>
-                                </DetailText>
-
-                                <Text>
-                                  <ToggleSwitchBtn
-                                    on={item.expose}
-                                    switchBtnHandler={() =>
-                                      switchBtnHandler(idx)
-                                    }
-                                    color={mainColor}
-                                  />
-                                </Text>
-
-                                <Text>
-                                  <IoCloseOutline
-                                    size={32}
-                                    color={color.black3}
-                                    style={{ cursor: "pointer" }}
-                                    onClick={() => removeBtnHandler(idx)}
-                                  />
-                                </Text>
-                              </List>
-                            )}
-                          </Draggable>
-                        );
-                      })}
-                    {provided.placeholder}
-                  </NoticeList>
-                );
-              }}
-            </Droppable>
-          </Table>
-          <PageWrapper>
-            <Pagination
-              color={mainColor}
-              itemsPerPage={postsPerPage}
-              totalItems={list.length}
-              paginate={setCurrentPage}
-            />
-          </PageWrapper>
-        </TableWrapper>
-      </DragDropContext>
+                                  <Text>
+                                    <IoCloseOutline
+                                      size={32}
+                                      color={color.black3}
+                                      style={{ cursor: "pointer" }}
+                                      onClick={() => removeBtnHandler(idx)}
+                                    />
+                                  </Text>
+                                </List>
+                              )}
+                            </Draggable>
+                          );
+                        })}
+                      {provided.placeholder}
+                    </NoticeList>
+                  );
+                }}
+              </Droppable>
+            </Table>
+            <PageWrapper>
+              <Pagination
+                color={mainColor}
+                itemsPerPage={postsPerPage}
+                totalItems={list.length}
+                paginate={setCurrentPage}
+              />
+            </PageWrapper>
+          </TableWrapper>
+        </DragDropContext>
+      )}
 
       <ModalPortal>
         {modal === "detail" && (
