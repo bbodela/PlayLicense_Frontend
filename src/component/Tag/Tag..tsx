@@ -18,13 +18,16 @@ const TagWrapper = styled.span`
   ${(props) =>
     props.title.includes("공연")
       ? css`
+          background-color:${styles.white};
           border: 3px ${styles.orange} solid;
         `
       : props.title.includes("교육")
       ? css`
+          background-color:${styles.white};
           border: 3px ${styles.yellow} solid;
         `
       : css`
+          background-color:${styles.white};
           border: 3px ${styles.blue_2} solid;
         `}
   &:first-child {
