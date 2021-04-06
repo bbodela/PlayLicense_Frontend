@@ -142,6 +142,12 @@ const FAQ = ({ pageType, btnBodyColor, mainColor }) => {
                               <List
                                 {...provided.draggableProps}
                                 ref={provided.innerRef}
+                                style={{
+                                  ...provided.draggableProps.style,
+                                  boxShadow: snapshot.isDragging
+                                    ? "0 0 .4rem #666"
+                                    : "none",
+                                }}
                               >
                                 <Text>
                                   <MoveIcon {...provided.dragHandleProps}>

@@ -164,15 +164,15 @@ export type CurationList = {
 };
 
 function AdminIndex({ adminMode }) {
-  // const { data, error, revalidate, mutate } = useSWR(
-  //   "/admin/home-banner",
-  //   fetcher,
-  //   {
-  //     dedupingInterval: 100000,
-  //   }
-  // );
-const data =[{id:1, title:"aa", exposure:true, desktopUrl:'',mobileUrl:"", order:1, url:""}];
-const revalidate=async()=>{return false};
+  const { data, error, revalidate, mutate } = useSWR(
+    "/admin/home-banner",
+    fetcher,
+    {
+      dedupingInterval: 100000,
+    }
+  );
+// const data =[{id:1, title:"aa", exposure:true, desktopUrl:'',mobileUrl:"", order:1, url:""}];
+// const revalidate=async()=>{return false};
   const { data: userLogin, error: userLoginError } = useSWR(
     "/admin/me",
     fetcher
@@ -228,15 +228,15 @@ const revalidate=async()=>{return false};
     // setBannerList(dummyData);
   }, [adminMode]);
 
-  // useEffect(() => {
-  //   if (!userLogin) {
-  //     router.push("/admin/login");
-  //   }
-  // }, [userLogin]);
+  useEffect(() => {
+    if (!userLogin) {
+      router.push("/admin/login");
+    }
+  }, [userLogin]);
 
-  // if (userLogin === false) {
-  //   router.push("/admin/login");
-  // }
+  if (userLogin === false) {
+    router.push("/admin/login");
+  }
 
   if (!data) return <div>loading</div>;
 
