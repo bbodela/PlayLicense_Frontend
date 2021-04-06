@@ -44,6 +44,9 @@ const Container = styled.div`
   border: ${(props) => (props.borderStyle ? props.borderStyle : "none")};
   background-color: ${(props) =>
     props.background ? props.background : color.white};
+  &:focus {
+    outline: none;
+  }
 `;
 
 const ImgWrapper = styled.div`
