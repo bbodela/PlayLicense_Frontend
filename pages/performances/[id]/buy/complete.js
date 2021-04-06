@@ -113,13 +113,15 @@ const Section = styled.div`
 `;
 const ItemImg = styled.div`
   width: 276px;
+  height: 386px;
   border-radius: 8px;
   box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.05);
-  /* margin-bottom: 91px; */
   margin-right: 33px;
 
   & > img {
-    min-width: 100%;
+    border-radius: 8px;
+    max-width: 100%;
+    max-height: 386px;
     height: auto;
   }
 `;

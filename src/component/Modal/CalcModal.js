@@ -4,11 +4,11 @@ import Performance from "../Form/Est_Performance";
 import Educate from "../Form/Est_Educate";
 import { useState } from "react";
 
-const CalcModal = ({ text }) => {
+const CalcModal = ({ text, onClickBtn }) => {
   const [purpose, setPurpose] = useState(0);
   const purposeObj = {
-    0: <Performance />,
-    1: <Educate />,
+    0: <Performance onClickBtn={onClickBtn} />,
+    1: <Educate onClickBtn={onClickBtn} />,
   };
   const switchPurpose = (e) => {
     setPurpose(e.target.attributes[0].value);

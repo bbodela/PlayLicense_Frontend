@@ -92,7 +92,7 @@ const PurchaseRequest = () => {
               <span>문의내역이 없습니다</span>
             </EmptyList>
           )}
-          {list &&
+          {list.length > 0 &&
             showCurrentPosts(list).map((ele, i) => {
               const {
                 category,

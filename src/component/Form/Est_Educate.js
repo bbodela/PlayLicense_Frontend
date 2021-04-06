@@ -33,7 +33,7 @@ const items = {
   ],
 };
 
-const Est_Educate = () => {
+const Est_Educate = ({ onClickBtn }) => {
   const router = useRouter();
   const [selected, setSelected] = useState({
     category: "",
@@ -294,7 +294,7 @@ const Est_Educate = () => {
               margin={"0px"}
               height={"56px"}
               size={"18px"}
-              onClick={() => nextBtnHandler()}
+              onClick={onClickBtn}
             >
               구매하기
             </OrangeShortBtn>
