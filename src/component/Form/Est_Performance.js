@@ -33,7 +33,7 @@ const items = {
   ],
 };
 
-const Est_Performance = () => {
+const Est_Performance = ({ onClickBtn }) => {
   const router = useRouter();
   const [selected, setSelected] = useState({
     category: "",
@@ -275,7 +275,7 @@ const Est_Performance = () => {
               margin={"0px"}
               height={"56px"}
               size={"18px"}
-              onClick={() => nextBtnHandler()}
+              onClick={onClickBtn}
             >
               구매하기
             </OrangeShortBtn>

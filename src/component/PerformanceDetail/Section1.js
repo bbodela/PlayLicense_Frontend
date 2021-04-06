@@ -180,7 +180,9 @@ const Section1 = ({ item }) => {
             onClickBtn={() => redirectHandler()}
           />
         )}
-        {modal === "calculate" && <CalcModal text={"가견적 계산하기"} />}
+        {modal === "calculate" && (
+          <CalcModal onClickBtn={go} text={"가견적 계산하기"} />
+        )}
         {modal === "heart" && (
           <AlertModal
             text={"찜한 공연은 마이페이지에서 확인할 수 있어요!"}
