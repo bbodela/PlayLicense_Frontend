@@ -77,7 +77,7 @@ function SignupThird() {
     setPwValidationError(isValid);
   };
   console.log(checkEmail, "here", !!checkEmail);
-  const finalCheck = !!name && !!email && !checkEmail && !!password && !!phone;
+  const finalCheck = !!name && !!email && !!checkEmail && !!password && !!phone;
   const onSubmit = () => {
     if (finalCheck) {
       const data = {
