@@ -52,9 +52,12 @@ const PurchaseRequest = () => {
   // GET -작품구매문의
   const getData = () => {
     axios.get("/product/buyer/cart").then((res) => {
+      console.log(res, "????????>>>>");
+
       if (res.status === 200) {
         console.log(res, "????????>>>>");
-        setList(res.data);
+        const data = res.data.filter((item, i) => item !== null);
+        setList(data);
       }
     });
   };
