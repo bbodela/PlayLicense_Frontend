@@ -51,10 +51,10 @@ Vue 기반의 소스
 - create-next-app으로 생성
 - 환경 설정 (Prettier, Eslint, Config)
 - React-Hooks
-- TypeScript
 - Context API
 - Styled-Components 스타일링
 - Vercel 배포
+- (TypeScript)
 
 ## 로컬 개발 방법
 
