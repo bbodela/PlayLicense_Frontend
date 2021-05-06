@@ -3,18 +3,20 @@
 -->
 
 # 상상마루 웹 프론트엔드 - Play License 
+
+공연 저작물 중개 (구매자 / 관리자 / 공급자) 웹 프론트엔드
 <!-- 이 저장소가 어느 프로젝트의 어떤 역할을 하는 저장소인지 적어주세요 -->
 <!--
 ex)
 비트코인은행 고객용 웹 프론트엔드 서버
 -->
 
-> **🎠️ Play License는 공연 저작물 라이센스 마켓입니다.** <br />
+
+## 🎠️ Play License는 공연 저작물 라이센스 마켓입니다.
 공연 저작물 중개를 통해 저작권을 보호함으로써 **건강한 산업 환경을 조성**하고, **다양한 콘텐츠 제작에 기여**하고자 합니다.
 
+<img width="1920" alt="무대이미지  덩어리" src="https://user-images.githubusercontent.com/59829298/117330350-8ef84d00-aed0-11eb-8492-0c749304a9be.png">
 <br />
-
-## 언어
 
 <!-- 이 저장소의 코드의 언어와 그 버전, 패키지 매니저 정보를 적어주세요 -->
 <!--
@@ -28,9 +30,6 @@ yarn 1.19.1 이상
 <img alt="npm-v7.0.3" src="https://img.shields.io/badge/npm-v7.0.3-aa96da" />
 <img alt="axios-0.21.1" src="https://img.shields.io/badge/axios-0.21.1-green.svg" />
 </p>
-
-JavaScript<br/>
-TypeScript 4.1.3 이상<br/>
 
 ## 구성
 
@@ -105,11 +104,9 @@ ex3)
 5. 만들어진 revision을 현재 서비스에 반영합니다. (문제 발생시 force deploy에 체크)
 -->
 
-## 배포 관련 계정 정보
-**Vercel**
+## 배포 관련 정보
 
-- Github Social Login
-  https://vercel.com/bbodela
+**Vercel**
 
 <!-- 배포에 관련해서 필요한 계정 정보를 적어주세요 -->
 <!--
@@ -130,7 +127,7 @@ https://rufree-junior-p1-sangsang-frontend-swart.vercel.app/ (서버 연결 🙆
 <br />
 https://bbodela.world/
 
-## 실서비스 확인용 계정 정보
+## 서비스 확인용 계정 정보
 
 <!-- 본 코드가 배포된 실서비스에서 장애가 있을 시 상황을 확인하기 위해서, 실서비스에 남아있는 테스트용 계정 정보를 적어주세요 -->
 <!--
